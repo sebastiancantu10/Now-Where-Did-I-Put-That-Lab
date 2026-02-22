@@ -5,6 +5,19 @@
 
 #include "../src/where.hpp"
 
-TEST_CASE( "it returns Hello World" ) {
-    REQUIRE( hello() == "Hello World!" );
+TEST_CASE("Char Search", "[find]") {
+
+    REQUIRE(find("The quick brown fox", 'e') == 2);
+    REQUIRE(find("The quick brown fox", ' ') == 3);
+    REQUIRE(find("cats bat about yarn", 'e') == -1);
+    REQUIRE(find("", 'a') == -1);
+}
+
+TEST_CASE("Substring Search", "[find]") {
+
+    REQUIRE(find("The quick brown fox", "quick") == 4);
+    REQUIRE(find("The quick brown fox", "e") == 2);
+    REQUIRE(find("The quick brown fox", "quiet") == -1);
+    REQUIRE(find("cats bat about yarn", "he") == -1);
+    REQUIRE(find("", "") == 0);
 }
